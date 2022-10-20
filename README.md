@@ -66,5 +66,17 @@ restore1   backup   Completed   2022-10-20 21:38:46 +0000 UTC   2022-10-20 21:38
 restore2   backup   Completed   2022-10-20 21:57:19 +0000 UTC   2022-10-20 21:57:24 +0000 UTC   0        1          2022-10-20 21:57:19 +0000 UTC   <none>
 root@kmaster:~# 
 ``` 
+### Scheduled backup 
+```
+Create a backup every 6 hours
+velero schedule create backupschedule --schedule="0 */6 * * *"
 
+Create a backup every 6 hours with the @every notation
+velero schedule create backupschedule --schedule="@every 6h"
 
+Create a daily backup of the web namespace
+velero schedule create backupschedule --schedule="@every 24h" --include-namespaces web
+
+Create a weekly backup, each living for 90 days (2160 hours)
+velero schedule create backupschedule --schedule="@every 168h" --ttl 2160h0m0s
+```
