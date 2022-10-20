@@ -5,16 +5,13 @@ MinIO is built to deploy anywhere - public or private cloud, baremetal infrastru
 orchestrated environments, and edge infrastructure.
 
 ### Installation of MinIO
-``
+
 wget https://dl.min.io/server/minio/release/linux-amd64/minio
 
-```
-```
 chmod +x minio
 sudo mv minio /usr/local/bin/
 or 
 sudo mv minio /usr/bin/
-``
 
 ### Start MinIO Server 
 ```
