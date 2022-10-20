@@ -20,8 +20,8 @@ rm -rf velero*
 ```
 cat <<EOF>> minio.credentials
 [default]
-aws_access_key_id=minio
-aws_secret_access_key=minio123
+aws_access_key_id=minioadmin
+aws_secret_access_key=minioadmin
 EOF
 ```
 ### Install Velero in the Kubernetes Cluster
