@@ -8,10 +8,12 @@ orchestrated environments, and edge infrastructure.
 
 wget https://dl.min.io/server/minio/release/linux-amd64/minio
 
+```
 chmod +x minio
 sudo mv minio /usr/local/bin/
 or 
 sudo mv minio /usr/bin/
+```
 
 ### Start MinIO Server 
 ```
