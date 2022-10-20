@@ -54,3 +54,15 @@ NAME     STATUS      ERRORS   WARNINGS   CREATED                         EXPIRES
 backup   Completed   0        0          2022-10-20 21:35:57 +0000 UTC   29d       default            <none>
 root@kmaster:~# 
 ```
+### Restore default namespace
+```
+root@kmaster:~# velero restore get
+NAME       BACKUP   STATUS      STARTED                         COMPLETED                       ERRORS   WARNINGS   CREATED                         SELECTOR
+restore1   backup   Completed   2022-10-20 21:38:46 +0000 UTC   2022-10-20 21:38:51 +0000 UTC   0        1          2022-10-20 21:38:46 +0000 UTC   <none>
+root@kmaster:~# velero restore create restore2 --from-backup backup
+Restore request "restore2" submitted successfully.
+Run `velero restore describe restore2` or `velero restore logs restore2` for more details.
+root@kmaster:~# 
+``` 
+
+
