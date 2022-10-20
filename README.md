@@ -28,6 +28,7 @@ EOF
 velero install \
    --provider velero.io/aws \
    --plugins velero/velero-plugin-for-aws:v1.9.2,digitalocean/velero-plugin:v1.9.2 \
+   #--plugins velero/velero-plugin-for-gcp:v1.2.0 \
    --bucket velero \
    --secret-file ./minio.credentials \
    --backup-location-config region=minio,s3ForcePathStyle=true,s3Url=http://192.168.29.71:9000
