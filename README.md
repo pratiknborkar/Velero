@@ -36,7 +36,7 @@ velero install \
    --secret-file ./minio.credentials \
    --backup-location-config region=minio,s3ForcePathStyle=true,s3Url=http://192.168.29.71:9000
 
-###Lets backup all the resources from default namespace 
+### Lets backup all the resources from default namespace 
 ``` 
 root@kmaster:~#  velero backup create backup
 
