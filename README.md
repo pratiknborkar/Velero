@@ -14,7 +14,6 @@ wget https://github.com/heptio/velero/releases/download/v1.9.2/velero-v1.9.2-lin
 tar zxf velero-v1.9.2-linux-amd64.tar.gz
 sudo mv velero-v1.9.2-linux-amd64/velero /usr/local/bin/
 rm -rf velero*
-
 ```
 ### Create credentials file i have tested in minio (Needed for velero initialization)
 ```
