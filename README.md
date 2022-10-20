@@ -39,9 +39,18 @@ velero install \
 ### Lets backup all the resources from default namespace 
 ``` 
 root@kmaster:~#  velero backup create backup
+or
+root@kmaster:~#  velero backup create backup --include-namespaces default
 
 root@kmaster:~# velero backup get
 NAME     STATUS      ERRORS   WARNINGS   CREATED                         EXPIRES   STORAGE LOCATION   SELECTOR
 backup   Completed   0        0          2022-10-20 21:35:57 +0000 UTC   29d       default            <none>
 root@kmaster:~# 
 ````
+### List all the backups using below command.
+```
+root@kmaster:~# velero get backup
+NAME     STATUS      ERRORS   WARNINGS   CREATED                         EXPIRES   STORAGE LOCATION   SELECTOR
+backup   Completed   0        0          2022-10-20 21:35:57 +0000 UTC   29d       default            <none>
+root@kmaster:~# 
+```
