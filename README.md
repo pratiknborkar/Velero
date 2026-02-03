@@ -99,6 +99,7 @@ argocd-app       Completed   0        0          2026-02-04 04:31:32 +0800 +08  
 monitoring-app   Completed   0        0          2026-02-04 04:32:05 +0800 +08   29d       default            <none>
 
 [root@jumphost ~]# velero restore  get
+
 [root@jumphost ~]# velero restore  create argocd-app-restore --from-backup argocd-app
 Restore request "argocd-app-restore" submitted successfully.
 Run `velero restore describe argocd-app-restore` or `velero restore logs argocd-app-restore` for more details.
@@ -109,9 +110,6 @@ Phase:                       Completed
 [root@jumphost ~]# velero restore  create monitoring-app-restore --from-backup monitoring-app
 Restore request "monitoring-app-restore" submitted successfully.
 Run `velero restore describe monitoring-app-restore` or `velero restore logs monitoring-app-restore` for more details.
-
-[root@jumphost ~]# velero restore describe monitoring-app-restore | grep Phase:
-Phase:                                 Completed
 
 [root@jumphost ~]# velero restore describe monitoring-app-restore | grep Phase:
 Phase:                       Completed
