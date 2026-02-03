@@ -48,7 +48,7 @@ velero install \
   --image docker.io/velero/velero:v1.16.2 \
   --plugins docker.io/velero/velero-plugin-for-aws:v1.12.2 \
   --bucket Velero-Backup \
-  --prefix sd7pd0bypgvo \
+  --prefix <Namespace> \
   --use-volume-snapshots=false \
   --secret-file /root/velero/credentials-velero \
   --backup-location-config \
