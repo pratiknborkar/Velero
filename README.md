@@ -52,7 +52,7 @@ velero install \
   --use-volume-snapshots=false \
   --secret-file /root/velero/credentials-velero \
   --backup-location-config \
-region=us-east-1,s3ForcePathStyle=true,s3Url=https://<Namespace>.compat.objectstorage.ap-sydney-1.oraclecloud.com,checksumAlgorithm="" \
+region=ap-sydney-1,s3ForcePathStyle=true,s3Url=https://<Namespace>.compat.objectstorage.ap-sydney-1.oraclecloud.com,checksumAlgorithm="" \
   --use-node-agent \
   --wait
 
