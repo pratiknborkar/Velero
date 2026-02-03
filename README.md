@@ -7,7 +7,7 @@ persistent volumes to another Kubernetes cluster.
 Velero features such as scheduled backups, retention schedules, and pre- or post-backup hooks for custom actions. 
 Velero can help protect data stored in persistent volumes and makes your entire Kubernetes cluster more resilient.
 
-### Download Velero 1.9.2 Release
+### Download Velero 1.17.2 Release
 
 ```
 wget https://github.com/heptio/velero/releases/download/v1.17.2/velero-v1.17.2-linux-amd64.tar.gz
@@ -23,6 +23,13 @@ aws_access_key_id=minioadmin
 aws_secret_access_key=minioadmin
 EOF
 ```
+### Create credentials For OCI
+```
+[default]
+aws_access_key_id=<OCI_CUSTOMER_SECRET_KEY_ID>
+aws_secret_access_key=<OCI_CUSTOMER_SECRET_KEY>
+```
+
 ### Install Velero in the Kubernetes Cluster
 ```
 velero install \
@@ -32,6 +39,23 @@ velero install \
    --bucket velero \
    --secret-file ./minio.credentials \
    --backup-location-config region=minio,s3ForcePathStyle=true,s3Url=http://192.168.29.71:9000
+```
+
+### Install Velero in OKE Cluster
+```
+velero install \
+  --provider aws \
+  --image docker.io/velero/velero:v1.16.2 \
+  --plugins docker.io/velero/velero-plugin-for-aws:v1.12.2 \
+  --bucket Velero-Backup \
+  --prefix sd7pd0bypgvo \
+  --use-volume-snapshots=false \
+  --secret-file /root/velero/credentials-velero \
+  --backup-location-config \
+region=us-east-1,s3ForcePathStyle=true,s3Url=https://<Namespace>.compat.objectstorage.ap-sydney-1.oraclecloud.com,checksumAlgorithm="" \
+  --use-node-agent \
+  --wait
+
 ```
 
 ### Lets backup all the resources from default namespace 
