@@ -89,7 +89,45 @@ NAME       BACKUP   STATUS      STARTED                         COMPLETED       
 restore1   backup   Completed   2022-10-20 21:38:46 +0000 UTC   2022-10-20 21:38:51 +0000 UTC   0        1          2022-10-20 21:38:46 +0000 UTC   <none>
 restore2   backup   Completed   2022-10-20 21:57:19 +0000 UTC   2022-10-20 21:57:24 +0000 UTC   0        1          2022-10-20 21:57:19 +0000 UTC   <none>
 root@kmaster:~# 
-``` 
+```
+
+### Restore default namespace in OKE
+```
+[root@jumphost ~]# velero backup get
+NAME             STATUS      ERRORS   WARNINGS   CREATED                         EXPIRES   STORAGE LOCATION   SELECTOR
+argocd-app       Completed   0        0          2026-02-04 04:31:32 +0800 +08   29d       default            <none>
+monitoring-app   Completed   0        0          2026-02-04 04:32:05 +0800 +08   29d       default            <none>
+
+[root@jumphost ~]# velero restore  get
+[root@jumphost ~]# velero restore  create argocd-app-restore --from-backup argocd-app
+Restore request "argocd-app-restore" submitted successfully.
+Run `velero restore describe argocd-app-restore` or `velero restore logs argocd-app-restore` for more details.
+
+[root@jumphost ~]# velero restore describe argocd-app-restore | grep Phase:
+Phase:                       Completed
+
+[root@jumphost ~]# velero restore  create monitoring-app-restore --from-backup monitoring-app
+Restore request "monitoring-app-restore" submitted successfully.
+Run `velero restore describe monitoring-app-restore` or `velero restore logs monitoring-app-restore` for more details.
+
+[root@jumphost ~]# velero restore describe monitoring-app-restore | grep Phase:
+Phase:                                 Completed
+
+[root@jumphost ~]# velero restore get
+NAME                     BACKUP           STATUS      STARTED                         COMPLETED                       ERRORS   WARNINGS   CREATED                         SELECTOR
+argocd-app-restore       argocd-app       Completed   2026-02-04 04:42:27 +0800 +08   2026-02-04 04:42:33 +0800 +08   0        2          2026-02-04 04:42:27 +0800 +08   <none>
+monitoring-app-restore   monitoring-app   Completed   2026-02-04 04:43:28 +0800 +08   2026-02-04 04:43:45 +0800 +08   0        7          2026-02-04 04:43:28 +0800 +08   <none>
+
+[root@jumphost ~]# velero restore describe monitoring-app-restore | grep Phase:
+Phase:                       Completed
+
+[root@jumphost ~]# velero restore get
+NAME                     BACKUP           STATUS      STARTED                         COMPLETED                       ERRORS   WARNINGS   CREATED                         SELECTOR
+argocd-app-restore       argocd-app       Completed   2026-02-04 04:42:27 +0800 +08   2026-02-04 04:42:33 +0800 +08   0        2          2026-02-04 04:42:27 +0800 +08   <none>
+monitoring-app-restore   monitoring-app   Completed   2026-02-04 04:43:28 +0800 +08   2026-02-04 04:43:45 +0800 +08   0        7          2026-02-04 04:43:28 +0800 +08   <none>
+[root@jumphost ~]#
+
+```
 ### Scheduled backup 
 ```
 Create a backup every 6 hours
