@@ -113,11 +113,6 @@ Run `velero restore describe monitoring-app-restore` or `velero restore logs mon
 [root@jumphost ~]# velero restore describe monitoring-app-restore | grep Phase:
 Phase:                                 Completed
 
-[root@jumphost ~]# velero restore get
-NAME                     BACKUP           STATUS      STARTED                         COMPLETED                       ERRORS   WARNINGS   CREATED                         SELECTOR
-argocd-app-restore       argocd-app       Completed   2026-02-04 04:42:27 +0800 +08   2026-02-04 04:42:33 +0800 +08   0        2          2026-02-04 04:42:27 +0800 +08   <none>
-monitoring-app-restore   monitoring-app   Completed   2026-02-04 04:43:28 +0800 +08   2026-02-04 04:43:45 +0800 +08   0        7          2026-02-04 04:43:28 +0800 +08   <none>
-
 [root@jumphost ~]# velero restore describe monitoring-app-restore | grep Phase:
 Phase:                       Completed
 
@@ -137,7 +132,7 @@ Create a backup every 6 hours with the @every notation
 velero schedule create backupschedule --schedule="@every 6h"
 
 Create a daily backup of the demo namespace
-velero schedule create backupschedule --schedule="@every 24h" --include-namespaces demo
+velero schedule create backupschedule --schedule="@every 24h" --include-namespaces argocd
 
 Create a weekly backup, each living for 90 days (2160 hours)
 velero schedule create backupschedule --schedule="@every 168h" --ttl 2160h0m0s
