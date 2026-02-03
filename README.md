@@ -80,3 +80,7 @@ velero schedule create backupschedule --schedule="@every 24h" --include-namespac
 Create a weekly backup, each living for 90 days (2160 hours)
 velero schedule create backupschedule --schedule="@every 168h" --ttl 2160h0m0s
 ```
+### Remove Velero 
+```
+velero uninstall --force
+```
